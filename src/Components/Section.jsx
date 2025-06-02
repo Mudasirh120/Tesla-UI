@@ -29,7 +29,6 @@ function Section({ title, description, bgImg, leftBtnTxt, rightBtnTxt }) {
 }
 export default Section;
 const Wrap = styled.div`
-  z-index: 1;
   width: 100vw;
   height: 100vh;
   background-image: url("/images/model-s.jpg");
