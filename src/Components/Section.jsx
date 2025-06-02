@@ -1,13 +1,24 @@
 import styled from "styled-components";
+import { motion } from "motion/react";
 function Section({ title, description, bgImg, leftBtnTxt, rightBtnTxt }) {
   return (
     <Wrap bgImg={bgImg}>
-      <ItemText>
+      <ItemText
+        initial={{ opacity: 0, y: 80 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        viewport={{ once: false, amount: 0.5 }}
+      >
         <h1>{title}</h1>
         <p>{description}</p>
       </ItemText>
       <Buttons>
-        <ButtonGroup>
+        <ButtonGroup
+          initial={{ opacity: 0, y: 80 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          viewport={{ once: false, amount: 0.3 }}
+        >
           <LeftButton>{leftBtnTxt}</LeftButton>
           {rightBtnTxt && <RightButton>{rightBtnTxt}</RightButton>}
         </ButtonGroup>
@@ -17,8 +28,8 @@ function Section({ title, description, bgImg, leftBtnTxt, rightBtnTxt }) {
   );
 }
 export default Section;
-const WrapBgImg = styled.div``;
 const Wrap = styled.div`
+  z-index: 1;
   width: 100vw;
   height: 100vh;
   background-image: url("/images/model-s.jpg");
@@ -31,7 +42,7 @@ const Wrap = styled.div`
   align-items: center;
   background-image: ${(props) => `url("/images/${props.bgImg}")`};
 `;
-const ItemText = styled.div`
+const ItemText = styled(motion.div)`
   padding-top: 15vh;
   text-align: center;
 `;
@@ -39,7 +50,7 @@ const Buttons = styled.div`
   display: flex;
   flex-direction: column;
 `;
-const ButtonGroup = styled.div`
+const ButtonGroup = styled(motion.div)`
   display: flex;
   margin-bottom: 30px;
   @media (max-width: 768px) {
